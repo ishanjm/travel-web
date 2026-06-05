@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import SearchWidget from "./SearchWidget";
+import { useLanguage } from "./LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center py-24 px-6 overflow-hidden">
       {/* Background Image with Overlay */}
@@ -21,20 +26,20 @@ export default function Hero() {
         {/* Tagline */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-semibold tracking-wider uppercase animate-fade-in">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-          SRI LANKA PREMIUM TRAVEL
+          {t.hero.tagline}
         </div>
 
         {/* Headline */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.15] text-white">
-          Discover the Wonders of <br />
+          {t.hero.headlinePart1} <br />
           <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent">
-            Pearl of the Indian Ocean
+            {t.hero.headlinePart2}
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="max-w-2xl text-lg md:text-xl text-slate-300 font-light leading-relaxed">
-          Plan your ultimate escape with our boutique accommodations, premium private drivers, and expert travel guides. Tailored itineraries built for your travel style.
+          {t.hero.subtitle}
         </p>
 
         {/* Search Widget */}

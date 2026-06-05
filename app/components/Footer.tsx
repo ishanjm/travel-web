@@ -1,4 +1,11 @@
+"use client";
+
+import { useLanguage } from "./LanguageContext";
+
 export default function Footer() {
+  const { language, t } = useLanguage();
+  const isJa = language === "ja";
+
   return (
     <footer id="about" className="border-t border-slate-900 bg-slate-950 py-16 px-6 text-slate-400">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -9,36 +16,44 @@ export default function Footer() {
               <circle cx="12" cy="12" r="10" />
               <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88" />
             </svg>
-            <span className="text-base font-bold tracking-widest text-white">VOYAGE CEYLON</span>
+            <span className="text-base font-bold tracking-widest text-white">{t.brandName}</span>
           </a>
           <p className="text-xs text-slate-500 font-light leading-relaxed mt-2">
-            Providing bespoke, premium travel arrangements across Sri Lanka. Specialist agency for private transport, boutique villas, and licensed guides.
+            {t.footer.desc}
           </p>
         </div>
 
         {/* Dest col */}
         <div className="flex flex-col gap-4 text-xs">
-          <h4 className="font-bold text-white uppercase tracking-wider">Top Destinations</h4>
-          <a href="#destinations" className="hover:text-emerald-400 transition-colors">Sigiriya & Dambulla</a>
-          <a href="#destinations" className="hover:text-emerald-400 transition-colors">Ella & Nuwara Eliya</a>
-          <a href="#destinations" className="hover:text-emerald-400 transition-colors">Galle Fort & Hikkaduwa</a>
-          <a href="#destinations" className="hover:text-emerald-400 transition-colors">Mirissa Beach (Whale Watching)</a>
+          <h4 className="font-bold text-white uppercase tracking-wider">{t.footer.colDest}</h4>
+          <a href="#destinations" className="hover:text-emerald-400 transition-colors">
+            {isJa ? "シーギリヤ＆ダンブッラ" : "Sigiriya & Dambulla"}
+          </a>
+          <a href="#destinations" className="hover:text-emerald-400 transition-colors">
+            {isJa ? "エッラ＆ヌワラエリヤ" : "Ella & Nuwara Eliya"}
+          </a>
+          <a href="#destinations" className="hover:text-emerald-400 transition-colors">
+            {isJa ? "ゴール砦＆ヒッカドゥワ" : "Galle Fort & Hikkaduwa"}
+          </a>
+          <a href="#destinations" className="hover:text-emerald-400 transition-colors">
+            {isJa ? "ミリッサビーチ (ホエールウォッチング)" : "Mirissa Beach (Whale Watching)"}
+          </a>
         </div>
 
         {/* Quick links col */}
         <div className="flex flex-col gap-4 text-xs">
-          <h4 className="font-bold text-white uppercase tracking-wider">Our Services</h4>
-          <a href="#services" className="hover:text-emerald-400 transition-colors">Private Chauffeur Fleet</a>
-          <a href="#services" className="hover:text-emerald-400 transition-colors">Boutique Villas & Hotels</a>
-          <a href="#concierge" className="hover:text-emerald-400 transition-colors">Licensed Tourist Guides</a>
-          <a href="#services" className="hover:text-emerald-400 transition-colors">Airport VIP Transfers</a>
+          <h4 className="font-bold text-white uppercase tracking-wider">{t.footer.colServ}</h4>
+          <a href="#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.transport}</a>
+          <a href="#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.stays}</a>
+          <a href="#concierge" className="hover:text-emerald-400 transition-colors">{t.footer.quick.guides}</a>
+          <a href="#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.airport}</a>
         </div>
 
         {/* Support col */}
         <div className="flex flex-col gap-4 text-xs">
-          <h4 className="font-bold text-white uppercase tracking-wider">Contact Ceylon Office</h4>
-          <span className="text-slate-500 font-light">Plan inquiry: reservations@voyageceylon.lk</span>
-          <span className="text-slate-500 font-light">Hotline: +94 (11) 255-CEYLON</span>
+          <h4 className="font-bold text-white uppercase tracking-wider">{t.footer.colContact}</h4>
+          <span className="text-slate-500 font-light">{t.footer.supportEmail}</span>
+          <span className="text-slate-500 font-light">{t.footer.supportPhone}</span>
           <div className="flex gap-4 mt-2">
             <a href="#" className="hover:text-white transition-colors" aria-label="Instagram">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -55,10 +70,10 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-slate-900/60 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
-        <span>&copy; {new Date().getFullYear()} Voyage Ceylon. All rights reserved.</span>
+        <span>&copy; {new Date().getFullYear()} {t.brandName}. {isJa ? "All rights reserved. (無断転載禁止)" : "All rights reserved."}</span>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-slate-400 transition-colors">Terms of Service</a>
+          <a href="#" className="hover:text-slate-400 transition-colors">{isJa ? "プライバシーポリシー" : "Privacy Policy"}</a>
+          <a href="#" className="hover:text-slate-400 transition-colors">{isJa ? "利用規約" : "Terms of Service"}</a>
           <a href="#" className="hover:text-slate-400 transition-colors">Sitemap</a>
         </div>
       </div>
