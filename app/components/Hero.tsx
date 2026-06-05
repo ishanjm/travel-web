@@ -11,10 +11,10 @@ export default function Hero() {
           alt="Sigiriya fortress in Sri Lanka"
           fill
           priority
-          className="object-cover object-center opacity-40 scale-105 animate-[pulse_10s_infinite_alternate] transition-transform duration-[10000ms]"
+          className="object-cover object-center opacity-70 scale-105 animate-[pulse_10s_infinite_alternate] transition-transform duration-[10000ms]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-transparent to-slate-950/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-slate-950/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-transparent to-slate-950/60" />
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center gap-8">
