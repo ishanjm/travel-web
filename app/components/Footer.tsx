@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Brand col */}
         <div className="flex flex-col gap-4">
-          <a href="#" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" />
               <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88" />
@@ -26,16 +26,16 @@ export default function Footer() {
         {/* Dest col */}
         <div className="flex flex-col gap-4 text-xs">
           <h4 className="font-bold text-white uppercase tracking-wider">{t.footer.colDest}</h4>
-          <a href="#destinations" className="hover:text-emerald-400 transition-colors">
+          <a href="/#destinations" className="hover:text-emerald-400 transition-colors">
             {isJa ? "シーギリヤ＆ダンブッラ" : "Sigiriya & Dambulla"}
           </a>
-          <a href="#destinations" className="hover:text-emerald-400 transition-colors">
+          <a href="/#destinations" className="hover:text-emerald-400 transition-colors">
             {isJa ? "エッラ＆ヌワラエリヤ" : "Ella & Nuwara Eliya"}
           </a>
-          <a href="#destinations" className="hover:text-emerald-400 transition-colors">
+          <a href="/#destinations" className="hover:text-emerald-400 transition-colors">
             {isJa ? "ゴール砦＆ヒッカドゥワ" : "Galle Fort & Hikkaduwa"}
           </a>
-          <a href="#destinations" className="hover:text-emerald-400 transition-colors">
+          <a href="/#destinations" className="hover:text-emerald-400 transition-colors">
             {isJa ? "ミリッサビーチ (ホエールウォッチング)" : "Mirissa Beach (Whale Watching)"}
           </a>
         </div>
@@ -43,10 +43,10 @@ export default function Footer() {
         {/* Quick links col */}
         <div className="flex flex-col gap-4 text-xs">
           <h4 className="font-bold text-white uppercase tracking-wider">{t.footer.colServ}</h4>
-          <a href="#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.transport}</a>
-          <a href="#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.stays}</a>
-          <a href="#concierge" className="hover:text-emerald-400 transition-colors">{t.footer.quick.guides}</a>
-          <a href="#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.airport}</a>
+          <a href="/#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.transport}</a>
+          <a href="/#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.stays}</a>
+          <a href="/guides" className="hover:text-emerald-400 transition-colors">{t.footer.quick.guides}</a>
+          <a href="/#services" className="hover:text-emerald-400 transition-colors">{t.footer.quick.airport}</a>
         </div>
 
         {/* Support col */}
