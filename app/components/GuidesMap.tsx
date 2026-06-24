@@ -7,21 +7,42 @@ import "leaflet/dist/leaflet.css";
 import { useLanguage } from "./LanguageContext";
 
 // Fix Leaflet marker icons in Next.js/React environment
-const createCustomIcon = (isSelected: boolean) => {
+const getCategoryEmoji = (category: string) => {
+  switch (category) {
+    case "beach": return "🏖️";
+    case "mountain": return "⛰️";
+    case "wildlife": return "🐘";
+    case "heritage": return "🏛️";
+    case "pilgrimage": return "🙏";
+    case "adventure": return "🥾";
+    case "waterfalls": return "🌿";
+    case "tea": return "🍃";
+    case "urban": return "🌆";
+    case "marine": return "🐋";
+    case "eco": return "🌳";
+    case "surfing": return "🏄";
+    default: return "📍";
+  }
+};
+
+const createCustomIcon = (category: string, isSelected: boolean) => {
+  const emoji = getCategoryEmoji(category);
   return L.divIcon({
     html: `
       <div class="relative flex items-center justify-center">
-        <span class="absolute inline-flex h-8 w-8 animate-ping rounded-full ${
+        <span class="absolute inline-flex h-10 w-10 animate-ping rounded-full ${
           isSelected ? "bg-emerald-400/40" : "bg-emerald-500/20"
         } opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-4 w-4 ${
-          isSelected ? "bg-emerald-300 ring-4 ring-emerald-500/40" : "bg-emerald-500 ring-2 ring-slate-900"
-        }"></span>
+        <div class="relative flex items-center justify-center rounded-full h-8 w-8 bg-slate-950 border-2 ${
+          isSelected ? "border-emerald-400 shadow-lg scale-110" : "border-slate-800 hover:scale-105"
+        } text-sm transition-transform duration-300">
+          ${emoji}
+        </div>
       </div>
     `,
     className: "custom-marker-icon",
-    iconSize: [32, 32],
-    iconAnchor: [16, 16],
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
   });
 };
 
@@ -805,19 +826,6 @@ const destinationsData: Destination[] = [
     categories: ["marine"],
     guides: [guidesPool.ns],
   },
-  {
-    id: "kalpitiya",
-    name: { en: "Kalpitiya", ja: "カルピティヤ" },
-    coords: [8.2327, 79.7592],
-    zoom: 12,
-    description: {
-      en: "A coastal peninsula famous for kite surfing, dolphin watching, and pristine marine reserves.",
-      ja: "カイトサーフィン、野生のイルカ観察、および美しい海洋保護区で有名な半島の町。",
-    },
-    categories: ["marine", "beach"],
-    guides: [guidesPool.ns],
-  },
-
   // Eco Tourism
   {
     id: "sinharaja",
@@ -1190,11 +1198,12 @@ export default function GuidesMap() {
           />
           {filteredDestinations.map((dest) => {
             const isSelected = selectedDest.id === dest.id;
+            const primaryCat = dest.categories && dest.categories.length > 0 ? dest.categories[0] : "all";
             return (
               <Marker
                 key={dest.id}
                 position={dest.coords}
-                icon={createCustomIcon(isSelected)}
+                icon={createCustomIcon(primaryCat, isSelected)}
                 eventHandlers={{
                   click: () => {
                     setSelectedDest(dest);
